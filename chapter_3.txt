@@ -92,6 +92,173 @@ enum Size {SMALL, LARGE};
 Size s = Size.Small; // 枚举类型变量声明，看成是一种类型，当然值也可以是null
 
 运算符：
+算术运算符： = - * / %
+
+整数被0除将产生一个异常，浮点数除0得到无穷大或无穷小
+
+浮点截断： strictfp修饰方法，如果用来修饰类，则类中的所有方法都进行截断
+
+数学函数与常量：
+静态方法不处理任何对象。如Math类中，double y = Math.pow(x, a);
+
+Math提供的函数：
+sin cos tan atan atan2 exp log log10 PI E
+
+静态导入后import static java.lang.Math.*  则在调用sin时不需要再加上Math前缀了。
+
+数值类型之间的转换。(小的向大的转换一般是合法的) 。
+一个二元运算符在运算时，会将两个操作数转换成同一种类型进行运算，向上转换。有double向double，否则有float向float，否则有long向long，否则都向int转换。
+
+强制类型转换(如果高位向低位转换不使用强制类型转换，会报错)：
+double x = 9.97;
+int nx = (int) x;
+
+结合赋值和运算符： 
+int x = 1;
+x += 3.5; (x + 3.5) ==> x = (int)(x + 3.5)
+
+自增/自减运算符: 同c++中的含义和用法。针对变量进行使用，不能针对数字。
+
+关系运算符： == != < > <= >= &&(短路求职) ||(短路求职) !(逻辑非) ?: 这些操作符同c++的使用方法。
+
+位运算符：
+&(与)  |(或) ^(异或) ~(取反)
+
+使用举例:
+int fB = (n & 0b1000);
+
+>>(用符号位填充高位,算术移位) << >>>(用0填充高位，逻辑移位) (移位运算符的右操作数要完成模32的运算，如果左操作数为long,则模64位运算)。 如 1 << 35 为 1 << 32
+
+java除了在for循环的第一和第三部分使用逗号表达式外，其他时候不使用逗号运算符。
+
+字符串:
+String类.
+方法：  s.substring(a, b); // b为不想复制的第一个位置。 子串长度 b - a
+拼接： s = s1 + s2 或者 s = s1 + 5 // 任何非字符串也会转换成字符串对象
+
+不可变字符串(好处是编译器可以共享)： 不能对字符串的某个值进行修改，只能通过拼接的方式或替换引用的方式，这里与C/C++不同。
+s = s.substring(0, 3) + "p!"。
+s = "help" 重新引用新的字符串。
+
+java中没有指针。
+
+字符串比较:
+应当使用equals, 可以是String s.equals(x) 也可以是 "Hello".equals(x); (猜测字符串字面量转换为了String对象)而不能使用==，java中的变量都是引用，都是地址。
+
+空串与Null串。首先要检查不为null，然后检查不为空串，检查空串的方式是s.length() != 0
+
+s.CharAt(index) 可以获得对应的char字符
+
+注意Java中码点和码点单元的区别。码点是一个数字，如6， 码点单元是对应的字符，如'A'
+
+String的一些常用方法
+equals equalsIgnore startsWith endsWith length substring toLowerCase toUpperCase trim strip join repeat
+
+构建字符串(避免拼接耗时):
+StringBuilder builder = new StringBuilder();
+builder.append("sadasd");
+builder.append(s);
+String completedString = builder.toString(); // 字符串构建完成时，调用toString得到String对象。
+StringBuilder的一些重要方法: append, length, insert, setCharAt, delete, toString
+
+输入与输出:
+读取输入:
+import util.*; // import导入相应的包
+Scanner in = new Scanner(System.in); // System.in是标准输入流，System.out是标准输出流，这里将标准输入流与in对象绑定
+String name = in.nextLine(); // 从标准输入流读取一行
+String word = in.next(); // 读取一个单词
+int num = in.nextInt(); // 读取一个整数
+还有一些其他的方法，hasNext, hasNextInt, hasNextDouble
+
+格式化输出(这一节重新看)：
+System.out.printf("%8.2f", 33.3333);
+输出8位，不足以空格补齐，.2为小数点后两位， f表示输出浮点，还有%s, %d等。
+每一个以%字符开始的格式说明符都用相应的参数替换。
+String s = String.Format(); // 可以通过这种方法来格式化一个字符串
+
+
+
+
+文件输入与输出：
+Scanner in = new Scanner(Path.of("file path"), StandardCharsets.UTF8); // 文件名中的反斜杠要两个进行转义
+PrintWriter out = new PrintWriter("file path", StanardCharsets.UTF8);
+这样，后续就和前面的读取和输出是一模一样的了。
+
+当然这些可能会抛出异常，
+需要能够在方法中标记，不然会程序停止。
+public static void main(String[] args) throws IOException
+{
+  Scanner in = new Scanner(Path.of("file path"), StandardCharsets.UTF_8);
+}
+
+控制流程(由条件语句和循环结构确定)： // 基本与C++类似，只不过没有goto语句，但break语句可以带标签进行内存循环跳出。
+
+块作用域(其中的变量的声明周期在这里面): 
+{
+}
+
+// TODO: 格式化，控制流程要继续看。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
