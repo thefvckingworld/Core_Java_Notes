@@ -1,1 +1,129 @@
+java程序基本要素:
+  注释/数据类型/变量与常量/运算符/字符串/输入输出/控制流/大数/数组
+
+
+一个简单的Java程序：
+
+public class FirstSample {
+  public static void main(String[] args) {
+    System.out.println("We will not use 'Hello, world!'");
+  }
+}
+
+public 为访问修饰符(用于控制程序的其他部分对这段代码的访问级别) ，Java区分大小写，class为程序逻辑的容器，Java程序的所有逻辑都必须在类中。
+
+class后紧跟类名，取名规则为与C语言同。类名建议使用大驼峰风格。
+
+源代码的文件名必须与公共类的名字相同，并用.java作为扩展名，编译后，得到.class(字节码文件，用于jvm解析)。
+
+代码运行： jvm总是从指定类中的main方法开始运行，main方法必须是public， Java中的任何方法的代码都用{}开始，结束。
+
+一个Java应用程序的格式如下：
+
+public class ClassName {
+  public static void main(String[] args) { // 与c++不同，main方法没有OS返回退出码,main结束，自动返回0，未结束，需要调用System.exit来返回其他错误码。
+  
+  }
+}
+
+调用方法的通用语法：
+object.method(para); // 就像 System.out.println(); System.out是一个对象, 这里的功能是打印一个空行
+
+字符串：使用双引号进行界定，如"Hello, Java"
+
+注释：
+1) // xxx
+2) /* xxx */   注：java中这种注释不能嵌套
+3) /** xxx */  注：这种注释可用来自动的生成文档
+
+数据类型：
+Java中有8种基本类型(4种整型，2种浮点类型，1种字符类型，一种bool型)
+
+4种整型(可以是负数，java没有unsigned这种形式)：
+int   4字节
+short 2字节
+long  8字节
+byte  1字节 (不能再用char了)
+
+长整型数值后缀有一个L和l，十六进制数值前缀0x或0X，八进制前缀一个0，如010为八进制，二进制为0b10101，并且为了方便阅读，可以加上下划线，如10_000_000这样。
+
+Byte Integer Long都提供了处理无符号除法，及求余数的方法，就是将-128~127处理成 0~255
+
+浮点类型：
+float  4字节 后缀有f/F，无f默认为double
+double 8字节 后缀有D/d
+
+浮点数3个特殊的值：
+Double.POSITIVE_INFINITY 正无穷
+Double.NEGATIVE_INFINITY 负无穷 
+Double.Nan 不是一个数字
+
+Nan使用说明: Double.isNaN(x), 不能是 x == Nan
+
+char类型(可表示为十六进制值)：
+使用单引号括起来，转移\u, 范围\u0000~\uFFFF，所有转义序列可以出现在单引号中，\u还可以出现在其他地方，如String\u005B\u005d args 为 String[] args
+
+其他转义序列:
+\b \t \n \r \" \' \\
+
+转义序列会在解析代码之前得到处理。 // look inside c:\users 这种会产生语法错误
+
+Unicodea(字符编码)和char类型：
+ 
+字符 代码值(码点) 
+
+java不建议使用char类型。
+
+boolean类型： false 和 true 与整型值不可互换。
+
+变量与常量：
+
+Java中可以将声明放在代码中的任何地方。并且与c++不同的是，Java中并不区分声明和定义，声明了就是一块内存。
+
+自动类型推导: var greeting = "Hello";
+
+Java常量：
+final double CM_PER_INCH = 2.54; // 常量名通常大写，且只能被赋值一次，最好是初始化的时候
+
+类常量： public static final double PI = 3.1415926; 使用 ClassName.PI;
+
+枚举类型:
+enum Size {SMALL, LARGE};
+Size s = Size.Small; // 枚举类型变量声明，看成是一种类型，当然值也可以是null
+
+运算符：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
