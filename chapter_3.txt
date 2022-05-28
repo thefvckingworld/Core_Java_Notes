@@ -172,11 +172,20 @@ int num = in.nextInt(); // 读取一个整数
 
 格式化输出(这一节重新看)：
 System.out.printf("%8.2f", 33.3333);
+为printf提供多个参数：
+System.out.printf("Hello, %s, Next year, you'll be %d", name, age);
 输出8位，不足以空格补齐，.2为小数点后两位， f表示输出浮点，还有%s, %d等。
-每一个以%字符开始的格式说明符都用相应的参数替换。
+每一个以%字符开始的格式说明符都用相应的参数替换。格式说明符尾部的转换符指示要格式化的数值的类型。还可以指定控制格式化输出外观的各种标志。
+可以使用s转换符格式化任意的对象，对于实现了Formttable接口的对象，调用formatTo方法，否则调用toString方法
+逗号标志可以增加分组分隔符，如%,.2f
 String s = String.Format(); // 可以通过这种方法来格式化一个字符串
 
+日期与时间的格式化选项：
+%tc
+参数索引(从1开始，用来指示使用哪个参数，好处是只需要提供一次日期):
+System.out.printf("%1$s %2$tB %2$te %2$tY", "Due date", new date());
 
+格式化：% 参数索引 $ flag width . 精度 格式化字符
 
 
 文件输入与输出：
@@ -193,104 +202,123 @@ public static void main(String[] args) throws IOException
 
 控制流程(由条件语句和循环结构确定)： // 基本与C++类似，只不过没有goto语句，但break语句可以带标签进行内存循环跳出。
 
-块作用域(其中的变量的声明周期在这里面): 
+块作用域(其中的变量的声明周期在这里面,在Java中，内层块的变量定义不允许与外层重名): 
 {
 }
 
-// TODO: 格式化，控制流程要继续看。
+条件语句(同c++):
+if (condition) {
 
+} else if (condition){
 
+} else {
 
+}
 
+循环(同c++)：
+while (statement) {
 
+}
 
+do {
 
+} while (statement);
 
+for (int i = 1; i <= 10; i++) {  // 比较里要主要浮点数的比较，有可能达不到精度值。 如 for (double x = 0; x != 10; x += 0.1)
 
+}
 
+多重选择(同c++)：
+//如果没有break,又不想报告警，可以在外围方法前加上注解@SuppressWarnings("fallthrough")
+switch (num) {
+  case 1:   // 可以是int char byte short 枚举常量，字符串
+    ...
+    break;
+  case 2:   // 如果是枚举常量，没有必要Size.SMALL这种，可以直接SMALL，Java会自动推导。
+    ...
+    break;
+  default:
+    ...
+    break;
+}
 
+中断控制流程的语句(同c++)：
+break continue
 
+带标签的break, 类似goto,可以进行跳出。标签需要带上冒号。// 但是break只能循环或者if中使用,并且只能往前跳。跳出希望跳出的循环。
+带标签的continue，同上。
 
+大数(处理任意长度数字序列)：
+import java.math.BigInteger; // 实现任意长度
+import java.math.BigDecimal; // 实现任意精度
 
+静态方法，将int装换为大数
+BigInteger a = BigInteger.valueOf(100);
 
+更大的数构造：
+BigInteger a = new BigInteger("5641321231324564654654132");
 
+大数常量： BigInterger.ZERO BigInteger.ONE BigInteger.TEN BigInteger.TWO
 
+大数运算：
+BigInteger c = a.add(b); // c = a + b
+BigInteger d = c.multiply(b.add(BigInteger.valueOf(2))) // d = c * (b + 2)
 
+比较，使用compareTo(other) 大于other 返回正数, 小于，返回负数，等于，返回0
 
+java没有运算符重载。
 
+数组(存储相同类型值的序列)：
+声明数组：
+int[] a; //  类型 [](代表数组) 数组名，但是这样仅仅是一个变量a，还不是真正的数组，a还是只是个引用
+int[] a = new int[n];
+int[] a = {1, 2, 3, 4, 5, 6, 7};
+int[] a = new int[] {1, 2, 3, 4, 5}; // 匿名数组初始化,这种形式就可以重新初始化一个数组了，即重新给a进行赋值。
+数字数组，自动初始化为0， boolean为false，对象数字为null
+获取数组个数：
+a.length;
 
+for-each循环:
+for (variable : collection) { // collection必须是一个数组或是一个实现了Iterable接口的类对象，例如ArratList
 
+} 
 
+打印数组:
+Arrays.toString(a);
 
+数组拷贝：
+int[] luckyNumbers = smallPrimes; // 这种形式为浅拷贝，两个变量将引用同一个数组。
 
+int[] luckyNumbres = Arrays.copyOf(smallPrimes, 2 * smallPrimes.length) // 这种形式为深拷贝，length为新数组长度
 
+数组排序:
+int[] a = new int[100];
+Arrays.sort(a); // 快排
 
+Math.random() 返回一个随机浮点数。
 
+多维数组申明：
+二维数组：
+double[][] b = new double[n][m];
+double[][] b = {
+    {1, 2},
+    {1, 2}
+  };
 
+需要两个for-each才能遍历二维数组
 
+另外，二维数组下，也可以对行进行交换：
+double[] temp = b[i];
+b[i] = b[j];
+b[j] = temp;
 
+不规则数组(为每一行分配个数)：
+int[][] c = new int[ROW_MAX][];
 
+for (int row = 0; row < c.length; row++) { // c.length返回c的行数。
+  c[row] = new int[xx];
+}
 
+其实，综上所述，java下数组名就是c++下的指针，在java下是一个引用，可以单独去使用。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// TODO: 写个程序把这些元素串联起来
