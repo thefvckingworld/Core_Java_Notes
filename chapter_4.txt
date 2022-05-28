@@ -1,0 +1,115 @@
+对象与类基本要素：
+面向对象程序设计概述/预定义类/自定义类/静态字段与静态方法/方法参数/对象构造/包/JAR文件/文档注释/类设计技巧
+
+面向对象设计概述：
+类：
+类是构造对象的模板或蓝图，由类构造对象的过程称为创建类的实例。且类可扩展，称为继承。
+
+对象(三个特性：行为，状态，标识)
+
+识别类： 分析问题的过程中寻找名词，而方法对应着动词。
+
+类之间的关系：(依赖(use a)，聚合(has a)，继承(is a))
+
+使用预定义类。
+使用类构造器构造新实例，构造器名字与类名相同，构造新实例，在构造器前面加上new 如: new Date();
+Date birthday = new Date();
+变量birthday不是一个对象，而是一个引用，是一个对象变量，就算引用了，也不是一个对象，new返回的也是一个引用。这里实际就相当于c++的指针。
+
+birthday = null; //显示的设置为null
+
+用户自定义类 简单形式：
+class ClassName {
+  field1
+  field2
+  ...
+  constructor1
+  constructor2
+  ...
+  method1
+  method2
+}
+
+在一个源文件中，只能有一个公共类，其他类可以不带访问修饰符，默认私有，且可以有任意多个。不过一般来讲，一个源文件，一个类。
+
+构造器总是结合new运算符使用，构造方法不能单独调用。
+构造器与类同名，构造器没有返回值，且与new一起使用，其他同函数方法。
+
+所有的java对象都是在堆中构造的。函数内部同名的局部变量会遮蔽更外层的变量。
+
+自动类型推导，var只能用于方法中的局部变量，如 var harry = new Employee();
+
+使用null引用，宽松方式，自己搞，严格方式，Objects.requireNonNull(n, "The name cannot be null.");
+
+隐式参数与显式参数：隐式参数就是this,对象本身，显式参数就不用说了。
+
+在Java中，所有的方法都必须在类中定义，且无内联的概念，那是jvm的任务。
+
+字段访问器：getxxx()  用来返回字段值
+
+基于类的访问权限：一个类的方法可以访问该类任意对象的私有字段，这是合法的，如：
+class Employee {
+  private String name;
+  public boolean equals(Employee other) {
+    return this.name.equals(other.name);
+  }
+}
+
+私有方法：将Public 改成 private;
+
+final实例字段: 如
+class Employee {
+  private final String name; // 这样的字段必须在构造对象中初始化，即在构造器中初始化。
+}
+
+final String name; // 表示name不会再改变其引用对象。
+
+静态字段: static，每个类都只有一个这样的字段，属于类，而非对象，非静态的每个对象都会有一个副本。访问： CLASS.staticVariable;
+
+静态常量：public static final
+
+静态方法：不在对象上执行的方法，无隐式参数，即不能访问非静态字段，只能访问静态字段。当然，对象也可以调用静态方法。
+
+工厂方法：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
