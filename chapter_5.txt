@@ -12,6 +12,125 @@ public class Manager extends Employee {
 
 将通用功能抽取到超类中在面向对象程序设计中十分普遍。
 
-覆盖方法：
+覆盖方法，方法名同父类相同，参数也相同。
+
+super关键字，与this不同，this是一个引用，而super是指示编译器调用父类的东西，故不能赋值等操作。super.getSalary();
+
+子类构造器：如果调用super()，必须是语句的第一条，如果没有显示的，就自动调用超类的无参数构造器，如果没有，则Java报告一个错误。 // 说明需要主动去初始化一个。
+啊
+
+父类的引用可以引用子类的对象，通过多态，可以找到争取的方法。
+
+对象引用数组：
+Manager[] managers = new Manager[10]; // 这里生成的是10个对象引用。
+
+Java中的所有类都继承自超类Object。
+
+在覆盖一个方法的时候，子类方法不能低于父类方法的可见性。
+
+组织继承： final类和方法
+public class final A {
+  
+}
+
+public class A {
+  public final String getName() { // 该方法不能被覆盖
+  }
+}
+
+字段也可以声明为final, 这个就是常量了，只能声明的时候进行初始化。
+
+java中看是否能够成功进行对象转化，使用instanceof操作符
+
+if (boss instanceof Manager) { // 将超类强制转换成子类进行子类检查,判断左边的对象是否为右边类的实例
+  a = (Manager) boss;
+}
+
+抽象类: 使用abstract关键字，包含一个或多个抽象方法的类本身必须被声明为抽象的。
+
+方法含absract后，本身就不需要再被实现，在子类中去实现。
+
+public abstract class Person {
+  public abstract String getDescription();
+}
+
+建议尽量将通用的字段放在超类中。
+
+有了抽象类，就可以把很多接口放在里面了。
+
+如果子类未实现全部抽象方法，则子类也必须未abstract的。
+
+抽象类不能实例化，只能声明引用。
+
+注： 抽象是和具体挂钩的，是设计上的一种描述。
+
+java中关于多态同c++代码。
+
+protected: 对本包和所有子类可见。
+
+4个访问控制修饰符小结:
+1.private: 仅对本类可见
+2.public: 对外部完全可见
+3.protected: 对本包和所有子类可见
+4.默认: 对本包可见
+
+Object: 所有类的超类
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
