@@ -76,7 +76,25 @@ protected: 对本包和所有子类可见。
 
 Object: 所有类的超类
 
+如Object obj = new Manager("xxx". 4555);
 
+数组类型也扩展了对象。
+
+Object类型可以作为一个参数传入，可以作为一个泛型容器。
+Object含equals方法，比较引用是否相等，也含getClass方法，返回一个对象所属的类。
+
+可以使用@Override来覆盖超类方法，指示编译器进行检查。
+
+Object hashCode: 得到对象的散列码，是一个整形值，不同的对象该值基本不会相同。由存储地址算出。String类覆盖了该方法，由内容进行计算得出。
+Object toString: 可重载，返回对象的字符串。
+子类的实现：
+public String toString() {
+  return super.toString() + "xxx";
+}
+
+当对象 + 字符串时，jvm自动调用对象的toString方法。打印对象也是。
+
+泛型数组列表：
 
 
 
