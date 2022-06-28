@@ -5,6 +5,13 @@
 
 反射：指在程序运行期间更多地了解类及其属性的能力。
 
+继承关键字: extends  如下：(java中所有继承都是公有继承，无c++中的私有继承和保护继承)
+public class Manager extends Employee {
+  added methods and fileds
+}
 
+将通用功能抽取到超类中在面向对象程序设计中十分普遍。
+
+覆盖方法：
 
 
